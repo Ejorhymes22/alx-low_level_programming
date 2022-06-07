@@ -2,14 +2,14 @@
 
 /**
  * print_times_table - prints n times table
- *
+ * @n: number for the table
  * Return: none
  */
 
 void print_times_table(int n)
 {
 	int i = 0;
-	int j = 0;
+       	int j = 0; 
 	int x;
 
 	if (n < 0 || n > 15)
