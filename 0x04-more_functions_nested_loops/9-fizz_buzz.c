@@ -15,6 +15,8 @@ int main(void)
 	{
 		if (!(i % 3) && !(i % 5))
 			printf("FizzBuzz ");
+		else if (i == 100)
+			printf("Buzz");
 		else if (!(i % 3))
 			printf("Fizz ");
 		else if (!(i % 5))
