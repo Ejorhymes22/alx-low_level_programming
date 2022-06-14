@@ -9,6 +9,7 @@
 
 int _atoi(char *s)
 {
+	int n;
 	int i = 0;
 	int flag = 0;
 	int digit = 0;
@@ -23,6 +24,8 @@ int _atoi(char *s)
 		i++;
 	}
 		
+	n = i;
+	i = 0;
 
 	while (s[i] != '\0')
 	{
