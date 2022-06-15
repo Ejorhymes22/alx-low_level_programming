@@ -12,7 +12,7 @@ int _strcmp(char *s1, char *s2)
 {
 	int len = 0;
 	int flag = 0;
-	int i = 0;
+
 
 	while (s1[len])
 		len++;
@@ -30,5 +30,5 @@ int _strcmp(char *s1, char *s2)
 		}
 	if (flag == len && len > 1)
 		return (0);
-	return (s1[i] - s2[i]);
+	return (*s1 - *s2);
 }
