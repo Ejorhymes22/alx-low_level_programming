@@ -14,6 +14,9 @@ char *cap_string(char *s)
 	char a[14] = {' ', '\t', '\n', ',', ';', '.', '!', '?',
 		'"', '(', ')', '{', '}'};
 
+	if (s[j] >= 'a' && s[j] <= 'z')
+		s[j] = s[j] - 32;
+
 	while (s[j])
 	{
 		while (a[i])

@@ -20,7 +20,7 @@ void reverse_array(int *a, int n)
 	n = n / 2;
 
 
-	while (n)
+	while (n < 0)
 	{
 		c = a[j];
 		a[j++] = a[i];
