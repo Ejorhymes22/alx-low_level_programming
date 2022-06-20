@@ -6,7 +6,7 @@
  * @s: the string
  * @accept: the substing
  *
- * Return: number of bytes int the initial segment of s 
+ * Return: number of bytes int the initial segment of s
  * which consist only of bythes from accept
  */
 
