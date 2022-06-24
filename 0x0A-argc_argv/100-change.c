@@ -16,14 +16,14 @@ int main(int argc, char *argv[])
 	int change = 0;
 	int i = 0;
 
-	if (argc != 2)
+	if (argc != 2 || atoi(argv[1]) == 0)
 	{
 		printf("Error\n");
 		return (1);
 	}
 	*argv[1] = atoi(argv[1]);
 
-	while (arr[i])
+	while (arr[i] && *argv[1] >= 0)
 	{
 		if (*argv[1] / arr[i])
 		{
@@ -37,5 +37,7 @@ int main(int argc, char *argv[])
 		}
 		i++;
 	}
+	if (*argv[1] < 0)
+		printf("0\n");
 	return (0);
 }
