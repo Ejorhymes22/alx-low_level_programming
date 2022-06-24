@@ -1,1 +1,1 @@
-This is about c programming language and it is a strongly typed and compiled language.
+This is about static library that store object files so as to be used in the linking phase
