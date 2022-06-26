@@ -16,6 +16,9 @@ char *argstostr(int ac, char **av)
 	int k = 0;
 	char *s;
 
+	if (ac == 0 || av == NULL)
+		return (NULL);
+
 	while (i < ac)
 	{
 		while (av[i][j])
@@ -26,7 +29,9 @@ char *argstostr(int ac, char **av)
 	i = 0;
 	j = 0;
 
-	s = (char *) malloc((k + ac) * sizeof(char));
+	s = (char *) malloc((k) * sizeof(char));
+	if (!s)
+		return (NULL);
 	k = 0;
 	while (i < ac)
 	{
