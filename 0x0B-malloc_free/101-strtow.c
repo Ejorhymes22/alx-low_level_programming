@@ -19,7 +19,7 @@ char **strtow(char *str)
 
 	num = no_of_words(str);
 
-	p = (char **) malloc(num * num * sizeof(char));
+	p = (char **) malloc((num + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
 	while (str[i])
@@ -33,11 +33,9 @@ char **strtow(char *str)
 		p[k] = (char *) malloc((j + 1) * sizeof(char));
 		if (!(p[k]))
 			return (NULL);
-		if (str[i])
-		{
-			j = 0;
-			k++;
-		}
+
+		j = 0;
+		k++;
 	}
 
 	for (i = 1, j = 0; str[i]; )
@@ -47,13 +45,14 @@ char **strtow(char *str)
 
 		for (k = 0; str[i] != ' ' && str[i]; i++, k++)
 			p[j][k] = str[i];
+
 		if (str[i])
 		{
 			p[j][k++] = '\0';
 			j++;
 		}
-
 	}
+	p[j] = NULL;
 	return (p);
 }
 
