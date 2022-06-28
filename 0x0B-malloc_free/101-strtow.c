@@ -12,14 +12,14 @@
 char **strtow(char *str)
 {
 	char **p;
-	int i = 1;
+	int i = 0;
 	int num;
 	int j = 0;
 	int k = 0;
 
 	num = no_of_words(str);
 
-	p = (char **) malloc((num + 1) * sizeof(char));
+	p = (char **) malloc((num * num) * sizeof(char));
 	if (!p)
 		return (NULL);
 	while (str[i])
@@ -38,7 +38,7 @@ char **strtow(char *str)
 		k++;
 	}
 
-	for (i = 1, j = 0; str[i]; )
+	for (i = 0, j = 0; str[i]; )
 	{
 		for (; str[i] == ' ' && str[i]; )
 			i++;
@@ -46,7 +46,7 @@ char **strtow(char *str)
 		for (k = 0; str[i] != ' ' && str[i]; i++, k++)
 			p[j][k] = str[i];
 
-		if (str[i])
+		if (str[i - 1] && str[i - 1] != ' ')
 		{
 			p[j][k++] = '\0';
 			j++;
