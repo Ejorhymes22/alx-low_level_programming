@@ -19,6 +19,8 @@ char **strtow(char *str)
 
 	num = no_of_words(str);
 
+	if (num == 0)
+		return (NULL);
 	p = (char **) malloc((num * num) * sizeof(char));
 	if (!p)
 		return (NULL);
@@ -26,26 +28,20 @@ char **strtow(char *str)
 	{
 		while (str[i] == ' ' && str[i])
 			i++;
-
 		for (; str[i] != ' ' && str[i]; i++)
 			j++;
-
-		p[k] = (char *) malloc((j + 1) * sizeof(char));
+		p[k] = (char *) malloc((j * j) * sizeof(char));
 		if (!(p[k]))
 			return (NULL);
-
 		j = 0;
 		k++;
 	}
-
 	for (i = 0, j = 0; str[i]; )
 	{
 		for (; str[i] == ' ' && str[i]; )
 			i++;
-
 		for (k = 0; str[i] != ' ' && str[i]; i++, k++)
 			p[j][k] = str[i];
-
 		if (str[i - 1] && str[i - 1] != ' ')
 		{
 			p[j][k++] = '\0';
