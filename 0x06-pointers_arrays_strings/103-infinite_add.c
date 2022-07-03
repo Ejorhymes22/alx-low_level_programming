@@ -1,58 +1,92 @@
 #include "main.h"
 
 /**
- * infinite_add - adds two numbers
- * @n1: the number 1
- * @n2: the number 2
- * @r: the buffer
- * @size_r: the size of the buffer
+ * infinite_add - adds numbers
+ * @n1: first num
+ * @n2: second num
+ * @r: buffer
+ * @size_r: buffer size
  *
- * Return: pointer to the buffer
+ * Return: r or 0
  */
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i = 0;
-	int sum = 0;
-	int addnext = 0;
-	int len1 = 0;
-	int len2 = 0;
-	int x, y;
+    int len1 = 0;
+    int len2 = 0;
+    int buff;
+    int x = 0;
+    int y = 0;
+    int i = 0;
 
-	while (n1[len1])
-		len1++;
-	while (n2[len2])
-		len2++;
+    while (n1[len1])
+        len1++;
+    while (n2[len2])
+        len2++;
+    r[i] = 0;
 
-	len1--;
-	len2--;
 
-	n1 += len1;
-	n2 += len2;
-	*(r + size_r) = '\0';
 
-	while (len1 >= 0)
-	{
-		x = n1[len1] + '0';
-		y = n2[len2] + '0';
+    while (len1 + 1 > 0 || len2 + 1 > 0)
+    {
+        len1--, len2--;
+        buff = r[i];
 
-		sum = x + y + addnext;
-		while (1)
-		{
-			if (sum <= 9)
-			{
-				if (i >= size_r)
-					return (0);
-				r[i++] = sum;
-				break;
-			}
-			addnext = sum / 10;
-			sum = sum % 10;
-		}
-		len1--;
-		len2--;
-		sum = 0;
-	} 
-	return (r);
+        if (len1 >= 0)
+            buff += (n1[len1] - '0');
+        else if (len1 < 0)
+            buff += 0;
+        if (len2 >= 0)
+            buff += (n2[len2] - '0');
+        else if (len2 < 0)
+            buff += 0;
+
+
+        if (buff > 9)
+        {
+            x = buff % 10;
+            y = buff / 10;
+            buff = 0;
+        }
+        r[i] = (buff + x) + '0';
+        i++;
+        r[i] = y;
+        x = 0;
+        y = 0;
+    }
+    r[i] = '\0';
+
+    if (i >= size_r)
+            return (0);
+
+    rev_string(r);
+
+
+    return r;
+
 }
 
+
+
+
+void rev_string(char *s)
+{
+        int i = 0;
+        int j = 0;
+        int k;
+        char c;
+
+        while (s[i] != '\0')
+                i++;
+
+        k = (i + 1) / 2;
+        i--;
+
+        while ((k) > 0)
+        {
+                c = s[j];
+                s[j++] = s[i];
+                s[i--] = c;
+                k--;
+        }
+}
