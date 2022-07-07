@@ -4,7 +4,7 @@
 
 /**
  * print_numbers - prints numbers with separation
- * @seperator: seperates nunbers
+ * @separator: seperates nunbers
  * @n: num of numbers
  *
  * Return: void
