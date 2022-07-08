@@ -44,9 +44,9 @@ void print_all(const char * const format, ...)
 				i++;
 				continue;
 		}
-		i++;
-		if (i < j)
+		if (i < j - 1)
 			printf(", ");
+		i++;
 	}
 	printf("\n");
 	va_end(list);
