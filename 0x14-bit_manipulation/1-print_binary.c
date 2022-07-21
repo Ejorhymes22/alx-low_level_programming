@@ -19,12 +19,12 @@ void print(unsigned long int n)
 {
 	unsigned long int j = 1;
 
-        if (n == 0)
-                ;
-        else
-                print(n >> j);
-        if (n & 1)
-                _putchar('1');
-        else if (n)
-                _putchar('0');
+	if (n == 0)
+		;
+	else
+		print(n >> j);
+	if (n & 1)
+		_putchar('1');
+	else if (n)
+		_putchar('0');
 }
