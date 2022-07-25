@@ -10,7 +10,7 @@
 
 int main(int ac, char **av)
 {
-	int fd, s, d, q, a, b;
+	int fd, s, d, a, b;
 	char buff[1024];
 
 	if (ac != 3)
@@ -19,22 +19,27 @@ int main(int ac, char **av)
 		exit(97);
 	}
 
-	fd = open(av[1], O_RDWR);
-	if (fd == -1 || !av[1])
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	d = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	d = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-	s = read(fd, buff, 1024);
-	q = write(d, buff, s);
-
-	if (d == -1 || s == -1 || q == -1)
+	while ((s = read(fd, buff, 1024)) > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-		close(fd);
-		exit(99);
+		if (d < 0 || write(d, buff, s) != s)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+			close(fd);
+			exit(99);
+		}
+	}
+	if (s < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		exit(98);
 	}
 	a = close(fd);
 	b = close(d);
