@@ -10,7 +10,7 @@
 
 int main(int ac, char **av)
 {
-	int fd, s, d, q, n, a, b;
+	int fd, s, d, q, a, b;
 	char buff[1024];
 
 	if (ac != 3)
@@ -27,13 +27,8 @@ int main(int ac, char **av)
 	}
 	d = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 
-	n = 1 + fd / 1024;
-	while (n)
-	{
-		s = read(fd, buff, 1024);
-		q = write(d, buff, s);
-		n--;
-	}
+	s = read(fd, buff, 1024);
+	q = write(d, buff, s);
 
 	if (d == -1 || s == -1 || q == -1)
 	{
