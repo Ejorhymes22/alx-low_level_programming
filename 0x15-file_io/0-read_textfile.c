@@ -1,9 +1,4 @@
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "main.h"
-
-#include <unistd.h>
 
 /**
  * read_textfile - reads a nd prints a text file to the osix standard output
@@ -16,6 +11,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd, d;
+	int i = 0;
 	char *ptr = malloc(sizeof(char) * letters);
 
 	if (!filename)
@@ -26,7 +22,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	d = read(fd, ptr, letters);
 
-	printf("%s\n", ptr);
+	while (ptr[i])
+	{
+		_putchar(ptr[i++]);
+	}
 	return (d);
 
 	close(fd);
