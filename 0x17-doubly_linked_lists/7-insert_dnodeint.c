@@ -31,12 +31,12 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	p = *h;
 	if (idx == 0)
 	{
-		q = add_dnodeint(&p, n);
+		q = add_dnodeint(*(&h), n);
 		return (q);
 	}
 	else if (idx == id)
 	{
-		q = add_dnodeint_end(&p, n);
+		q = add_dnodeint_end(*(&h), n);
 		return (q);
 	}
 	id = 0;
