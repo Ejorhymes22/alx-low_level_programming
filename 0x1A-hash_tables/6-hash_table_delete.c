@@ -24,8 +24,6 @@ void hash_table_delete(hash_table_t *ht)
 			tmp = tmp->next;
 			free(new);
 		}
-		tmp = ht->array[idx];
-		free(tmp);
 		idx++;
 	}
 	free(ht->array);
