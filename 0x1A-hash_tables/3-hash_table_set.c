@@ -3,14 +3,12 @@
 #include "hash_tables.h"
 #include <stdlib.h>
 
-
 /**
- * hash_table_set - adds element tothe hash table
- * @ht: the pointer to the hash t
+ * make_node - makes a new node
  * @key: the key
- * @value: of the key
+ * @value: value
  *
- * Return: 0 or 1
+ * Return: pointer to node
  */
 
 hash_node_t *make_node(const char *key, const char *value)
@@ -26,14 +24,24 @@ hash_node_t *make_node(const char *key, const char *value)
 	return (new);
 }
 
+
+/**
+ * hash_table_set - adds element tothe hash table
+ * @ht: the pointer to the hash t
+ * @key: the key
+ * @value: of the key
+ *
+ * Return: 0 or 1
+ */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	hash_node_t *tmp, *node;
 
-	if (strcmp(key, "") == 0 || !key)
-		return 0;
-	index = key_index((const unsigned char*)key, ht->size);
+	if (!ht || strcmp(key, "") == 0 || !key || !value)
+		return (0);
+	index = key_index((const unsigned char *)key, ht->size);
 	tmp = ht->array[index];
 
 	while (tmp != NULL)
