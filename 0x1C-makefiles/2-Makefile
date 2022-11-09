@@ -2,17 +2,17 @@
 
 CC=gcc
 SRC=main.c school.c
-OBJ=main.o school.o
+OBJ=${*.o}
 
 NAME=school
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $@
-
 %.o:%.c
-	$(CC) $^ -c -o $@
+	$(CC) -c -o $@ $^
+
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^
 
 clean:
 	rm -f $(OBJ) $(NAME)
