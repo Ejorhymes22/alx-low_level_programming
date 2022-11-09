@@ -1,18 +1,18 @@
 #!/bin/bash
 
 CC=gcc
-SRC=main.c school.c
-OBJ=${*.o}
+SRC=$(wildcard *.c)
+OBJ:= $(SRC:%.c=%.o)
 
 NAME=school
 
 all: $(NAME)
 
-%.o:%.c
-	$(CC) -c -o $@ $^
-
 $(NAME): $(OBJ)
 	$(CC) -o $@ $^
+
+%.o:%.c
+	$(CC) -c -o $@ $^
 
 clean:
 	rm -f $(OBJ) $(NAME)
