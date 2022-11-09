@@ -8,18 +8,21 @@ def island_perimeter(grid):
     x = []
     width = 0
     lenght = 0
-    for i in grid:
-        j, flag = 0, 0
-        try:
-            for j in range(len(i)):
-                if i[j] == 1 and j not in x:
-                    width += 1
-                    x.append(j)
-                if i[j] == 1 and flag == 0:
-                    lenght += 1
-                    flag = 1
-        except:
+    try:
+        for i in grid:
+            j, flag = 0, 0
+            try:
+                for j in range(len(i)):
+                    if i[j] == 1 and j not in x:
+                        width += 1
+                        x.append(j)
+                    if i[j] == 1 and flag == 0:
+                        lenght += 1
+                        flag = 1
+            except:
+                return 0
+        if lenght > 100 or width > 100:
             return 0
-        if lenght == width or lenght > 100 or width > 100:
-            return 0
-    return 2 * (lenght + width)
+        return 2 * (lenght + width)
+    except:
+        return 0
