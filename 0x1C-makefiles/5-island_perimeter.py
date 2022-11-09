@@ -19,10 +19,10 @@ def island_perimeter(grid):
                     if i[j] == 1 and flag == 0:
                         lenght += 1
                         flag = 1
-            except:
+            except TypeError:
                 return 0
         if lenght > 100 or width > 100:
             return 0
         return 2 * (lenght + width)
-    except:
+    except TypeError:
         return 0
