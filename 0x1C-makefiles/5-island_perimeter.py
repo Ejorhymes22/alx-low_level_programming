@@ -9,13 +9,12 @@ def island_perimeter(grid):
     width = 0
     lenght = 0
     for i in grid:
-        j, l, y = 0, 0, []
+        j, flag = 0, 0
         for j in range(len(i)):
             if i[j] == 1 and j not in x:
                 width += 1
                 x.append(j)
-            if i[j] == 1 and l == 0:
+            if i[j] == 1 and flag == 0:
                 lenght += 1
-                y.append(l)
-                l = 1
+                flag = 1
     return 2 * (lenght + width)
