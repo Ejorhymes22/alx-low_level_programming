@@ -1,0 +1,20 @@
+#!/bin/bash
+
+all: school clean
+
+
+
+	
+
+CC = gcc
+SRC:= $(wildcard *.c)
+
+clean:
+ifeq ($([ -e "/school" ];), True)
+	rm school
+else
+	echo "shool"
+endif
+
+school: ${SRC}
+	${CC} ${SRC} -o $@
