@@ -9,10 +9,10 @@ NAME=school
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $(SRC)
+	$(CC) $(OBJ) -o $@
 
 %.o:%.c
-	$(CC) -c -o $@ $^
+	$(CC) $^ -c -o $@
 
 clean:
 	rm -f $(OBJ) $(NAME)
