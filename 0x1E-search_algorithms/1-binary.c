@@ -2,6 +2,7 @@
 #include "search_algos.h"
 #include <string.h>
 
+int binarySearch(int arr[], size_t l, size_t r, int x);
 
 /**
  * binary_search - searches for a value in a sorted list using binary search
@@ -14,35 +15,39 @@
 
 int binary_search(int *array, size_t size, int value)
 {
-	size_t idx = size;
-	int *arr = array;
-	size_t i;
-	size_t m;
+	return (binarySearch(array, 0, size - 1, value));
+}
 
-	while (idx)
+/**
+ * binarySearch - searches for a value in a sorted list using binary search
+ * @arr: pointer to the array
+ * @l: the indelx of firstelement of the array
+ * @r: zie of array
+ * @x: value to search for
+ *
+ * Return: index or -1
+ */
+
+int binarySearch(int arr[], size_t l, size_t r, int x)
+{
+	int mid;
+	size_t i;
+
+	if (r >= l)
 	{
-		idx = (idx / 2);
-		if (size % 2)
-			m = idx;
-		else
-			m = idx - 1;
-		for (i = 0; i < size; i++)
-			printf("%d ", arr[i]);
+		mid = l + (r - l) / 2;
+
+		printf("Searching in array: %d", arr[l]);
+		for (i = l + 1; i <= r; i++)
+			printf(", %d", arr[i]);
 		printf("\n");
-		if (arr[m] == value)
-			return (idx);
-		else if (arr[m] < value)
-		{
-			if (size % 2)
-				arr += (idx + 1);
-			else
-				arr += idx;
-			size -= (idx);
-		}
-		else if (arr[m] > value)
-		{
-			size -= (idx + 1);
-		}
+		if (arr[mid] == x)
+			return (mid);
+
+		if (arr[mid] > x)
+			return (binarySearch(arr, l, mid - 1, x));
+
+		return (binarySearch(arr, mid + 1, r, x));
 	}
 	return (-1);
 }
