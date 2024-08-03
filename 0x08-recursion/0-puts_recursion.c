@@ -2,6 +2,7 @@
 
 /**
  * _puts_recursion - this prints recursively a string
+ * @s: takes in a string(pointer to a string)
  *
  * Return: 0
  */
