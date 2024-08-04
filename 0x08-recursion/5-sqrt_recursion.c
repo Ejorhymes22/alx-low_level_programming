@@ -13,7 +13,7 @@ int _sqrt_helper(int n, int y)
         if (n <= y)
             return (-1);
         else if (n == y * y)
-           return (y * y);
+           return (y);
         return _sqrt_helper(n, y + 1);
 }
 
