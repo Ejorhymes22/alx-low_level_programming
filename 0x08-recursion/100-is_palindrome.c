@@ -16,6 +16,7 @@ int palindromeChecker(char *str, int len, int i)
 		return (0);
 	return (1);
 }
+
 /**
  * _strlen_recursion - returns the length of a string
  * @s: the string to check the length of
