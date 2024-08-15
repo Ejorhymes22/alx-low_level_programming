@@ -11,5 +11,5 @@ int _prime_helper(int n, int y, int sum);
 int is_palindrome(char *s);
 int palindromeChecker(char *str, int len, int i);
 int _strlen_recursion(char *s);
- int is_palindrome(char *s);
+int is_palindrome(char *s);
 
